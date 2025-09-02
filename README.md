@@ -40,6 +40,16 @@ The AI App Builder is a CLI-based tool designed to guide users through the proce
 - `phase4_testing_iteration/`: Logs and reports for Phase 4.
 - `phase5_launch_growth/`: Metadata and marketing materials for Phase 5.
 
+## Resetting the Project
+
+To reset the project and delete all generated files, run the following command:
+
+```bash
+python reset_project.py
+```
+
+You will be prompted to confirm the reset before any files are deleted.
+
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
 
