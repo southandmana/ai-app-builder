@@ -26,7 +26,7 @@ The AI App Builder is a CLI-based tool designed to guide users through the proce
    ```
 3. Run the CLI:
    ```bash
-   python cli_interface.py
+   python tools/cli_interface.py
    ```
 
 ## Requirements
@@ -34,18 +34,27 @@ The AI App Builder is a CLI-based tool designed to guide users through the proce
 - No external dependencies required (uses Python's standard library).
 
 ## Project Structure
-- `phase1_concept_strategy/`: Files and deliverables for Phase 1.
-- `phase2_development_planning/`: Files and deliverables for Phase 2.
-- `phase3_ai_execution/`: Codebase and tests for Phase 3.
-- `phase4_testing_iteration/`: Logs and reports for Phase 4.
-- `phase5_launch_growth/`: Metadata and marketing materials for Phase 5.
+- `copilot_brain/`: Knowledge base for the app builder, including phase-specific instructions.
+- `user_guide/`: Human-facing guides and FAQs.
+- `project_overview/`: Meta files like `README.md` and progress trackers.
+- `phases/`: Contains all deliverables grouped by development phases:
+  - `phase1_concept_strategy/`: Files for Phase 1.
+  - `phase2_development_planning/`: Deliverables, user flows, and architecture plans for Phase 2.
+  - `phase3_ai_execution/`: Codebase, tests, and CI/CD workflows for Phase 3.
+  - `phase4_testing_iteration/`: Test results and bug reports for Phase 4.
+  - `phase5_launch_growth/`: Marketing materials and app store metadata for Phase 5.
+- `recall/`: Auto-generated memory summaries for each phase.
+- `templates_examples/`: Templates and examples for app development.
+- `tests/`: General test scripts.
+- `tools/`: Utility scripts like `cli_interface.py` and `reset_project.py`.
+- `.venv/`: Virtual environment for the project.
 
 ## Resetting the Project
 
 To reset the project and delete all generated files, run the following command:
 
 ```bash
-python reset_project.py
+python tools/reset_project.py
 ```
 
 You will be prompted to confirm the reset before any files are deleted.
