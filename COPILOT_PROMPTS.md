@@ -105,3 +105,99 @@ File: `COPILOT_PROMPTS.md`
 Location: project root
 
 If you'd like wording changes, a different filename, or an indexed table of contents, tell me and I'll update the file.
+
+---
+
+### Reorganize Project Structure — Clean and Logical
+What it does: Proposes a new folder structure to organize files logically without breaking functionality.
+```text
+Scan the entire project workspace and propose a new, clean folder structure that organizes files logically. Ensure all necessary changes (e.g., imports, references) are updated to reflect the new structure without breaking functionality.
+```
+
+### Proposed Folder Structure
+What it does: Provides a clean, logical organization for the project files.
+```text
+app_project/
+│
+├── copilot_brain/                  # Copilot’s knowledge base
+│   ├── FOLDER_STRUCTURE.md
+│   ├── instructions.md
+│   ├── phase1_concept_strategy.md
+│   ├── phase2_development_planning.md
+│   ├── phase3_ai_execution.md
+│   ├── phase4_testing_iteration.md
+│   └── phase5_launch_growth.md
+│
+├── user_guide/                     # Human-facing guide
+│   ├── how_to_use.md
+│   ├── customization_guidance.md
+│   ├── feedback_loop.md
+│   ├── roles_and_workflows.md
+│   └── welcome_and_faq.md
+│
+├── project_overview/               # Project-level meta files
+│   ├── README.md
+│   ├── MASTER_GOAL_PROGRESS.md
+│   ├── Milestone_Goal_Progress_and_Instructions.md
+│   └── UPDATE_PROGRESS_INSTRUCTIONS.md
+│
+├── phases/                         # All phases grouped together
+│   ├── phase1_concept_strategy/
+│   ├── phase2_development_planning/
+│   │   ├── screen_flows/
+│   │   │   └── [screen_name].mmd
+│   │   ├── deliverables/
+│   │   │   ├── user_flow.md
+│   │   │   ├── data_flow.md
+│   │   │   ├── state_flow.md
+│   │   │   ├── api_service_flow.md
+│   │   │   ├── error_exception_flow.md
+│   │   │   └── security_privacy_flow.md
+│   │   ├── system_architecture.md
+│   │   ├── integration_view.md
+│   │   ├── functional_architecture.md
+│   │   ├── component_architecture.md
+│   │   ├── acceptance_criteria.md
+│   │   └── tech_stack.md
+│   ├── phase3_ai_execution/
+│   │   ├── codebase/
+│   │   ├── tests/
+│   │   ├── configs/
+│   │   └── ci_cd_workflows.md
+│   ├── phase4_testing_iteration/
+│   │   ├── test_results.md
+│   │   ├── bug_report.md
+│   │   └── ci_cd_logs.md
+│   └── phase5_launch_growth/
+│       ├── appstore_metadata.md
+│       ├── marketing_funnel.md
+│       ├── monetization.md
+│       ├── retention_systems.md
+│       └── trust_safety.md
+│
+├── recall/                         # Memory layer (auto-generated summaries)
+│   └── phaseX_stepY_summary.md
+│
+├── templates_examples/             # Templates and examples
+│   ├── accessibility_guidance.md
+│   ├── complex_app_appendix.md
+│   ├── copilot_prompts.md
+│   ├── feature_checklist.md
+│   ├── localization_guidance.md
+│   ├── roles_and_collaboration_guidance.md
+│   ├── security_privacy_guidance.md
+│   ├── troubleshooting_appendix.md
+│   └── update_verification_checklist.md
+│
+├── tests/                          # General tests
+│   ├── test_chat_interface.py
+│   ├── test_chat_interface_unittest.py
+│   └── __pycache__/
+│
+├── tools/                          # Utility scripts
+│   ├── cli_interface.py
+│   ├── update_progress.py
+│   └── reset_project.py
+│
+└── .venv/                          # Virtual environment
+```

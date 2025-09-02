@@ -1,13 +1,13 @@
 import os
 import shutil
 
-# List of paths to generated files and folders
+# Updated list of paths to generated files and folders
 generated_paths = [
     "phases/phase1_concept_strategy/output/",
-    "phases/phase2_development_planning/generated_files/",
-    "phases/phase3_ai_execution/build/",
-    "phases/phase4_testing_iteration/test_results/",
-    "phases/phase5_launch_growth/marketing_materials/",
+    "phases/phase2_development_planning/deliverables/generated_files/",
+    "phases/phase3_ai_execution/codebase/build/",
+    "phases/phase4_testing_iteration/tests/test_results/",
+    "phases/phase5_launch_growth/marketing/marketing_materials/",
 ]
 
 def reset_project():

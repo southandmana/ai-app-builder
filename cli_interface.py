@@ -21,6 +21,8 @@ from datetime import datetime
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 BRAIN = os.path.join(ROOT, "copilot_brain")
+PHASE2_DELIVERABLES = os.path.join(ROOT, "phases/phase2_development_planning/deliverables")
+PHASE2_SCREEN_FLOWS = os.path.join(ROOT, "phases/phase2_development_planning/screen_flows")
 
 
 def _any_files(path: str) -> bool:

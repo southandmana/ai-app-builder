@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).parent
 
 # Define the progress file
-PROGRESS_FILE = ROOT_DIR / 'MASTER_GOAL_PROGRESS.md'
+PROGRESS_FILE = ROOT_DIR / 'project_overview/MASTER_GOAL_PROGRESS.md'
 
 # Define progress evaluation criteria
 PROGRESS_CRITERIA = {
