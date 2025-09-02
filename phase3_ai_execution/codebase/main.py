@@ -71,7 +71,23 @@ def execute_app_plan(plan):
         "features": plan['architecture']['features']
     }
 
+    # Add authentication feature
+    app = add_authentication(app)
+
     print(f"App built: {app}")
+    return app
+
+# Modular Feature: Authentication
+def add_authentication(app):
+    """
+    Add authentication to the app.
+    """
+    print("Adding authentication to the app...")
+    app["authentication"] = {
+        "method": "OAuth2",
+        "provider": "Google, Facebook, Custom"
+    }
+    print("Authentication added.")
     return app
 
 # Phase 4: Testing
