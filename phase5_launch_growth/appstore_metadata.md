@@ -1,3 +1,3 @@
 # App Store Metadata
 
-Placeholder content for app store metadata.
+This file will be populated dynamically during Phase 5 execution.

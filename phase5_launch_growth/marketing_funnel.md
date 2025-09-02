@@ -1,3 +1,3 @@
 # Marketing Funnel
 
-Placeholder content for marketing funnel.
+This file will be populated dynamically during Phase 5 execution.
