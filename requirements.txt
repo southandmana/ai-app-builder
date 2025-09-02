@@ -1,2 +1,1 @@
 # Requirements for the AI App Builder project
-unittest
