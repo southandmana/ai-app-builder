@@ -48,6 +48,7 @@ The AI App Builder is a CLI-based tool designed to guide users through the proce
 - `tests/`: General test scripts.
 - `tools/`: Utility scripts like `cli_interface.py` and `reset_project.py`.
 - `.venv/`: Virtual environment for the project.
+- `.gitignore`: Specifies files and directories to be ignored by Git, such as Python cache files (`*.pyc`) and `__pycache__/`.
 
 ## Resetting the Project
 
