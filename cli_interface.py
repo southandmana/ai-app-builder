@@ -24,176 +24,176 @@ BRAIN = os.path.join(ROOT, "copilot_brain")
 
 
 def _any_files(path: str) -> bool:
-	if not os.path.isdir(path):
-		return False
-	for root, dirs, files in os.walk(path):
-		files = [f for f in files if not f.startswith(".")]
-		if files:
-			return True
-	return False
+    if not os.path.isdir(path):
+        return False
+    for root, dirs, files in os.walk(path):
+        files = [f for f in files if not f.startswith(".")]
+        if files:
+            return True
+    return False
 
 
 def _phase2_progress(phase2_root: str) -> bool:
-	if not os.path.isdir(phase2_root):
-		return False
-	deliv = os.path.join(phase2_root, "deliverables")
-	flows = os.path.join(phase2_root, "screen_flows")
-	return _any_files(deliv) or _any_files(flows)
+    if not os.path.isdir(phase2_root):
+        return False
+    deliv = os.path.join(phase2_root, "deliverables")
+    flows = os.path.join(phase2_root, "screen_flows")
+    return _any_files(deliv) or _any_files(flows)
 
 
 def clear():
-	try:
-		os.system("clear")
-	except Exception:
-		pass
+    try:
+        os.system("clear")
+    except Exception:
+        pass
 
 
 def read_first_heading(path: str) -> str:
-	if not os.path.isfile(path):
-		return "(guide not found)"
-	try:
-		with open(path, "r", encoding="utf-8") as f:
-			for line in f:
-				if line.strip().startswith("#"):
-					return line.strip().lstrip("#").strip()
-		return "(guide loaded)"
-	except Exception:
-		return "(guide unreadable)"
+    if not os.path.isfile(path):
+        return "(guide not found)"
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip().startswith("#"):
+                    return line.strip().lstrip("#").strip()
+        return "(guide loaded)"
+    except Exception:
+        return "(guide unreadable)"
 
 
 def read_preview(path: str, lines: int = 30) -> str:
-	if not os.path.isfile(path):
-		return "Guide not found."
-	out = []
-	try:
-		with open(path, "r", encoding="utf-8") as f:
-			for _ in range(lines):
-				line = f.readline()
-				if not line:
-					break
-				out.append(line.rstrip("\n"))
-			if f.readline():
-				out.append("... (guide continues)")
-	except Exception as e:
-		return f"(unable to read guide: {e})"
-	return "\n".join(out)
+    if not os.path.isfile(path):
+        return "Guide not found."
+    out = []
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for _ in range(lines):
+                line = f.readline()
+                if not line:
+                    break
+                out.append(line.rstrip("\n"))
+            if f.readline():
+                out.append("... (guide continues)")
+    except Exception as e:
+        return f"(unable to read guide: {e})"
+    return "\n".join(out)
 
 
 PHASES = [
-	{
-		"index": 1,
-		"title": "Phase 1: Concept & Strategy",
-		"folder": os.path.join(ROOT, "phase1_concept_strategy"),
-		"guide": os.path.join(BRAIN, "phase_1_concept_strategy.md"),
-		# Progress signal: any non-hidden file in Phase 1 folder
-		"progress_check": lambda p: any(
-			os.path.isfile(os.path.join(p, f)) for f in os.listdir(p) if not f.startswith(".")
-		) if os.path.isdir(p) else False,
-	},
-	{
-		"index": 2,
-		"title": "Phase 2: Development Planning",
-		"folder": os.path.join(ROOT, "phase2_development_planning"),
-		"guide": os.path.join(BRAIN, "phase_2_dev_planning.md"),
-		# Progress signals: dynamic artifacts only (deliverables/* or screen_flows/*)
-		"progress_check": lambda p: _phase2_progress(p),
-	},
-	{
-		"index": 3,
-		"title": "Phase 3: AI Execution",
-		"folder": os.path.join(ROOT, "phase3_ai_execution"),
-		"guide": os.path.join(BRAIN, "phase_3_ai_execution.md"),
-		# Progress signals: any files inside codebase/ or tests/
-		"progress_check": lambda p: _any_files(os.path.join(p, "codebase")) or _any_files(os.path.join(p, "tests")),
-	},
-	{
-		"index": 4,
-		"title": "Phase 4: Testing & Iteration",
-		"folder": os.path.join(ROOT, "phase4_testing_iteration"),
-		"guide": os.path.join(BRAIN, "phase_4_testing_iteration.md"),
-		# Progress signals: files in tests subfolders or key md outputs
-		"progress_check": lambda p: (
-			_any_files(os.path.join(p, "tests", "unit")) or
-			_any_files(os.path.join(p, "tests", "integration")) or
-			_any_files(os.path.join(p, "tests", "e2e")) or
-			_any_files(os.path.join(p, "tests", "load")) or
-			_any_files(os.path.join(p, "tests", "security")) or
-			any(os.path.isfile(os.path.join(p, name)) for name in ("test_results.md", "bug_report.md", "ci_cd_logs.md"))
-		),
-	},
-	{
-		"index": 5,
-		"title": "Phase 5: Launch & Growth",
-		"folder": os.path.join(ROOT, "phase5_launch_growth"),
-		"guide": os.path.join(BRAIN, "phase_5_launch_growth.md"),
-		# Progress signals: files in known subfolders or key md outputs
-		"progress_check": lambda p: (
-			any(
-				_any_files(os.path.join(p, d))
-				for d in ("launch_materials", "marketing", "monetization", "retention", "trust_safety")
-			) or
-			any(
-				os.path.isfile(os.path.join(p, name))
-				for name in ("appstore_metadata.md", "marketing_funnel.md", "monetization.md", "retention_systems.md", "trust_safety.md")
-			)
-		),
-	},
+    {
+        "index": 1,
+        "title": "Phase 1: Concept & Strategy",
+        "folder": os.path.join(ROOT, "phase1_concept_strategy"),
+        "guide": os.path.join(BRAIN, "phase_1_concept_strategy.md"),
+        # Progress signal: any non-hidden file in Phase 1 folder
+        "progress_check": lambda p: any(
+            os.path.isfile(os.path.join(p, f)) for f in os.listdir(p) if not f.startswith(".")
+        ) if os.path.isdir(p) else False,
+    },
+    {
+        "index": 2,
+        "title": "Phase 2: Development Planning",
+        "folder": os.path.join(ROOT, "phase2_development_planning"),
+        "guide": os.path.join(BRAIN, "phase_2_dev_planning.md"),
+        # Progress signals: dynamic artifacts only (deliverables/* or screen_flows/*)
+        "progress_check": lambda p: _phase2_progress(p),
+    },
+    {
+        "index": 3,
+        "title": "Phase 3: AI Execution",
+        "folder": os.path.join(ROOT, "phase3_ai_execution"),
+        "guide": os.path.join(BRAIN, "phase_3_ai_execution.md"),
+        # Progress signals: any files inside codebase/ or tests/
+        "progress_check": lambda p: _any_files(os.path.join(p, "codebase")) or _any_files(os.path.join(p, "tests")),
+    },
+    {
+        "index": 4,
+        "title": "Phase 4: Testing & Iteration",
+        "folder": os.path.join(ROOT, "phase4_testing_iteration"),
+        "guide": os.path.join(BRAIN, "phase_4_testing_iteration.md"),
+        # Progress signals: files in tests subfolders or key md outputs
+        "progress_check": lambda p: (
+            _any_files(os.path.join(p, "tests", "unit")) or
+            _any_files(os.path.join(p, "tests", "integration")) or
+            _any_files(os.path.join(p, "tests", "e2e")) or
+            _any_files(os.path.join(p, "tests", "load")) or
+            _any_files(os.path.join(p, "tests", "security")) or
+            any(os.path.isfile(os.path.join(p, name)) for name in ("test_results.md", "bug_report.md", "ci_cd_logs.md"))
+        ),
+    },
+    {
+        "index": 5,
+        "title": "Phase 5: Launch & Growth",
+        "folder": os.path.join(ROOT, "phase5_launch_growth"),
+        "guide": os.path.join(BRAIN, "phase_5_launch_growth.md"),
+        # Progress signals: files in known subfolders or key md outputs
+        "progress_check": lambda p: (
+            any(
+                _any_files(os.path.join(p, d))
+                for d in ("launch_materials", "marketing", "monetization", "retention", "trust_safety")
+            ) or
+            any(
+                os.path.isfile(os.path.join(p, name))
+                for name in ("appstore_metadata.md", "marketing_funnel.md", "monetization.md", "retention_systems.md", "trust_safety.md")
+            )
+        ),
+    },
 ]
 
 
 def analyze_workspace():
-	"""Return last phase index with progress and a per-phase summary."""
-	summaries = []
-	last = 0
-	for ph in PHASES:
-		has = ph["progress_check"](ph["folder"])
-		heading = read_first_heading(ph["guide"])
-		summaries.append({
-			"index": ph["index"],
-			"title": ph["title"],
-			"guide_heading": heading,
-			"has_progress": bool(has),
-		})
-		if has:
-			last = ph["index"]
-	return last, summaries
+    """Return last phase index with progress and a per-phase summary."""
+    summaries = []
+    last = 0
+    for ph in PHASES:
+        has = ph["progress_check"](ph["folder"])
+        heading = read_first_heading(ph["guide"])
+        summaries.append({
+            "index": ph["index"],
+            "title": ph["title"],
+            "guide_heading": heading,
+            "has_progress": bool(has),
+        })
+        if has:
+            last = ph["index"]
+    return last, summaries
 
 
 def prompt_yes_no(prompt: str, default_yes: bool = True) -> bool:
-	suffix = "(Y/n)" if default_yes else "(y/N)"
-	while True:
-		ans = input(f"{prompt} {suffix}: ").strip().lower()
-		if not ans:
-			return default_yes
-		if ans in ("y", "yes"):
-			return True
-		if ans in ("n", "no"):
-			return False
-		print("Please answer y or n.")
+    suffix = "(Y/n)" if default_yes else "(y/N)"
+    while True:
+        ans = input(f"{prompt} {suffix}: ").strip().lower()
+        if not ans:
+            return default_yes
+        if ans in ("y", "yes"):
+            return True
+        if ans in ("n", "no"):
+            return False
+        print("Please answer y or n.")
 
 
 def prompt_choice(prompt: str, choices: list[str]) -> int:
-	while True:
-		sel = input(prompt).strip()
-		if sel.isdigit():
-			idx = int(sel)
-			if 1 <= idx <= len(choices):
-				return idx
-		print(f"Please enter a number 1–{len(choices)}.")
+    while True:
+        sel = input(prompt).strip()
+        if sel.isdigit():
+            idx = int(sel)
+            if 1 <= idx <= len(choices):
+                return idx
+        print(f"Please enter a number 1–{len(choices)}.")
 
 
 def continue_from_phase(idx: int):
-	# Show preview of current and subsequent phases; do not modify files
-	for current in range(idx, 6):
-		ph = next(p for p in PHASES if p["index"] == current)
-		clear()
-		print(ph["title"])
-		print(f"Guide: {os.path.relpath(ph['guide'], ROOT)}\n")
-		print(read_preview(ph["guide"]))
-		if current < 5:
-			input("\nPress Enter to proceed to the next phase preview...")
-	clear()
-	print("You’ve reached the end of the preview flow. Generation steps will run during actual execution.")
+    # Show preview of current and subsequent phases; do not modify files
+    for current in range(idx, 6):
+        ph = next(p for p in PHASES if p["index"] == current)
+        clear()
+        print(ph["title"])
+        print(f"Guide: {os.path.relpath(ph['guide'], ROOT)}\n")
+        print(read_preview(ph["guide"]))
+        if current < 5:
+            input("\nPress Enter to proceed to the next phase preview...")
+    clear()
+    print("You’ve reached the end of the preview flow. Generation steps will run during actual execution.")
 
 
 def _ask(prompt, default=""):
@@ -686,14 +686,14 @@ def chat_interface(test_inputs=None):
 
 
 def main():
-	# If run with 'initiate' argument, or no args, always initiate
-	if len(sys.argv) == 1 or (len(sys.argv) > 1 and sys.argv[1].lower() == "initiate"):
-		initiate()
-	else:
-		# For any other args, still default to initiate to keep UX simple
-		initiate()
+    # If run with 'initiate' argument, or no args, always initiate
+    if len(sys.argv) == 1 or (len(sys.argv) > 1 and sys.argv[1].lower() == "initiate"):
+        initiate()
+    else:
+        # For any other args, still default to initiate to keep UX simple
+        initiate()
 
 
 if __name__ == "__main__":
-	main()
+    main()
 

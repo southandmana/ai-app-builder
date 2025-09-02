@@ -2,11 +2,14 @@ import unittest
 import signal
 from cli_interface import chat_interface
 
+
 class TimeoutException(Exception):
     pass
 
+
 def timeout_handler(signum, frame):
     raise TimeoutException("Test timed out")
+
 
 class TestChatInterface(unittest.TestCase):
 
@@ -51,6 +54,7 @@ class TestChatInterface(unittest.TestCase):
             self.fail("test_interrupted_input timed out")
         except Exception as e:
             self.fail(f"chat_interface raised an exception unexpectedly: {e}")
+
 
 if __name__ == "__main__":
     # Run tests individually to isolate issues

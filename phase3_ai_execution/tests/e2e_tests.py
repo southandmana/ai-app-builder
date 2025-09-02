@@ -4,6 +4,7 @@
 
 import unittest
 
+
 class TestEndToEnd(unittest.TestCase):
     def test_example(self):
         self.assertIn("end", "end-to-end")
@@ -17,6 +18,7 @@ class TestEndToEnd(unittest.TestCase):
         # Simulate an error scenario and validate error handling
         error_message = "Error: Invalid input"
         self.assertIn("Error", error_message)
+
 
 if __name__ == "__main__":
     unittest.main()

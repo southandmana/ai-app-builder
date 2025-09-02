@@ -34,6 +34,19 @@ jobs:
         source .venv/bin/activate
         python -m unittest discover -s phase3_ai_execution/tests
 
+    - name: Run linting
+      run: |
+        source .venv/bin/activate
+        pip install flake8
+        flake8 .
+
+    - name: Measure test coverage
+      run: |
+        source .venv/bin/activate
+        pip install coverage
+        coverage run -m unittest discover -s phase3_ai_execution/tests
+        coverage report
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
