@@ -3,8 +3,9 @@ import signal
 import sys
 import os
 
+# Add the tools directory to the Python path to enable importing cli_interface
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../tools')))
-from cli_interface import chat_interface
+from cli_interface import chat_interface  # type: ignore
 
 
 class TimeoutException(Exception):
