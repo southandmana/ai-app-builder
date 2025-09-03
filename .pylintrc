@@ -1,0 +1,26 @@
+[MASTER]
+ignore=__pycache__,*.pyc,*.pyo,*.so,*.dylib
+
+[MESSAGES CONTROL]
+disable=C0114,C0115,C0116
+
+[FORMAT]
+max-line-length=100
+
+[BASIC]
+good-names=i,j,k,ex,Run,_,id
+
+[DESIGN]
+max-args=10
+max-branches=15
+max-locals=15
+max-nested-blocks=5
+max-public-methods=20
+max-statements=50
+
+[TYPECHECK]
+ignored-modules=
+ignored-classes=
+
+[REPORTS]
+output-format=colorized
