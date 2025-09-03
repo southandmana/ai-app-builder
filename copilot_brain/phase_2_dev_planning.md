@@ -1,5 +1,3 @@
-
-
 # Phase 2 – Planning How Your App Will Work (For Everyone)
 
 **Note:** For a full list and explanation of software development methods (like Agile or Scrum), see [`copilot_brain/methodologies_and_best_practices.md`](methodologies_and_best_practices.md).
@@ -308,4 +306,13 @@ This gives you a complete, dynamic blueprint for moving into **Phase 3 – AI Ex
 Would you like to:  
 1. Proceed immediately to Phase 3  
 2. Take a break and return later
+
+---
+
+## Progress Updates
+After completing each step, display progress in the format:
+"Step [X] of [Total Steps in this Phase] complete ✅ (next up: Step [X+1] – [Step Title])"
+
+## Recall Summaries
+Generate a summary file for each step in `/recall/phase2_stepY_summary.md`.
 

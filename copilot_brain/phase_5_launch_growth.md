@@ -138,5 +138,14 @@ This phase is about letting Copilot help you launch and grow your app. You don�
 
 ---
 
+## Progress Updates
+After completing each step, display progress in the format:
+"Step [X] of [Total Steps in this Phase] complete ✅ (next up: Step [X+1] – [Step Title])"
+
+## Recall Summaries
+Generate a summary file for each step in `/recall/phase5_stepY_summary.md`.
+
+---
+
 **Outcome:** By the end of Phase 5, the app will be launched, available to users, generating revenue, and supported by systems for retention, trust, and ongoing growth.
 

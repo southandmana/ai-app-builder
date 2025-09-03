@@ -130,5 +130,14 @@ This phase is about letting Copilot test your app and help you fix any issues. Y
 
 ---
 
+## Progress Updates
+After completing each step, display progress in the format:
+"Step [X] of [Total Steps in this Phase] complete ✅ (next up: Step [X+1] – [Step Title])"
+
+## Recall Summaries
+Generate a summary file for each step in `/recall/phase4_stepY_summary.md`.
+
+---
+
 **Outcome:** By the end of Phase 4, the app will be stable, secure, and validated against all acceptance and performance criteria, ready for launch in Phase 5.
 

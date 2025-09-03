@@ -1,5 +1,3 @@
-
-
 # Phase 3 – Copilot Builds Your App (For Everyone)
 
 **Note:** For a full list and explanation of software development methods (like Agile or Scrum), see [`copilot_brain/methodologies_and_best_practices.md`](methodologies_and_best_practices.md).
@@ -98,6 +96,15 @@ This phase is about letting Copilot build your app for you. You don’t need to 
 - After each generated deliverable:
   - Confirm completion count (e.g., 2/6 done).
   - Remind user to test in CI/CD pipeline.
+
+---
+
+## Progress Updates
+After completing each step, display progress in the format:
+"Step [X] of [Total Steps in this Phase] complete ✅ (next up: Step [X+1] – [Step Title])"
+
+## Recall Summaries
+Generate a summary file for each step in `/recall/phase3_stepY_summary.md`.
 
 ---
 

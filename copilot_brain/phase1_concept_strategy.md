@@ -1,5 +1,3 @@
-
-
 # Phase 1 – Concept & Strategy (For Everyone)
 
 **Note:** For a full list and explanation of software development methods (like Agile or Scrum), see [`copilot_brain/methodologies_and_best_practices.md`](methodologies_and_best_practices.md).
@@ -51,8 +49,25 @@ This phase is about figuring out what your app is, why it matters, and who it’
 
 ---
 
+## Step 1 – Define Your App Idea
+
+**What Copilot will do automatically:**
+- Copilot can help you define your app idea more clearly.
+
+**What you need to do:**
+- If you have a clear idea, just describe it.
+- If not, just say “continue” and Copilot will help you brainstorm.
+
 ---
 
+## Progress Updates
+After completing each step, display progress in the format:
+"Step [X] of [Total Steps in this Phase] complete ✅ (next up: Step [X+1] – [Step Title])"
+
+## Recall Summaries
+Generate a summary file for each step in `/recall/phase1_stepY_summary.md`.
+
+---
 
 ## Step 2 – Who is your app for?
 
@@ -65,9 +80,6 @@ This phase is about figuring out what your app is, why it matters, and who it’
 
 ---
 
----
-
-
 ## Step 3 – What problems does your app solve?
 
 **What Copilot will do automatically:**
@@ -79,9 +91,6 @@ This phase is about figuring out what your app is, why it matters, and who it’
 
 ---
 
----
-
-
 ## Step 4 – What’s the main feature and how will it help?
 
 **What Copilot will do automatically:**
@@ -92,9 +101,6 @@ This phase is about figuring out what your app is, why it matters, and who it’
 - If not, just say “continue” and Copilot will suggest one for you.
 
 ---
-
----
-
 
 ## Step 5 – Why will people choose your app?
 
