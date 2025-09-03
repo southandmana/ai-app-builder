@@ -19,8 +19,9 @@ from textwrap import dedent
 from pathlib import Path
 from datetime import datetime
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BRAIN = os.path.join(ROOT, "copilot_brain")
+
 PHASE2_DELIVERABLES = os.path.join(ROOT, "phases/phase2_development_planning/deliverables")
 PHASE2_SCREEN_FLOWS = os.path.join(ROOT, "phases/phase2_development_planning/screen_flows")
 
@@ -144,21 +145,17 @@ PHASES = [
 
 
 def analyze_workspace():
-    """Return last phase index with progress and a per-phase summary."""
+    """Return a default summary for all phases without checking progress."""
     summaries = []
-    last = 0
     for ph in PHASES:
-        has = ph["progress_check"](ph["folder"])
         heading = read_first_heading(ph["guide"])
         summaries.append({
             "index": ph["index"],
             "title": ph["title"],
             "guide_heading": heading,
-            "has_progress": bool(has),
+            "has_progress": False,  # Always assume no progress
         })
-        if has:
-            last = ph["index"]
-    return last, summaries
+    return 0, summaries  # Always start from scratch
 
 
 def prompt_yes_no(prompt: str, default_yes: bool = True) -> bool:
@@ -450,42 +447,36 @@ def run_write_mode(project_root: Path):
         print("Invalid choice. Exiting write mode.")
 
 
+def execute_phase(phase):
+    """Execute a single phase by reading steps from the guide."""
+    print(f"\nStarting {phase['title']}...")
+    guide_path = phase['guide']
+
+    if not os.path.isfile(guide_path):
+        print(f"Guide not found for {phase['title']}. Skipping...")
+        return
+
+    with open(guide_path, "r", encoding="utf-8") as guide:
+        steps = [line.strip() for line in guide if line.startswith("Step")]
+
+    total_steps = len(steps)
+    for i, step in enumerate(steps, start=1):
+        print(f"\n{step}")
+        print(f"Instruction: Follow the directive in the guide.")
+        input(f"Step {i} of {total_steps} complete ✅. Press Enter to continue...")
+
+    print(f"\n{phase['title']} complete ✅\n")
+
+
 def initiate():
     clear()
     print("AI Apps Builder")
     print("Your friendly guide to plan, build, test, and launch your app.\n")
 
-    print("[DEBUG] Initiating workspace analysis to detect prior progress...\n")
-    last_idx, summaries = analyze_workspace()
+    for phase in PHASES:
+        execute_phase(phase)
 
-    print("[DEBUG] Phase outline:")
-    for s in summaries:
-        status = "progress found" if s["has_progress"] else "no progress"
-        print(f"- {s['title']} — {s['guide_heading']} [{status}]")
-
-    # Edge case: already completed all phases
-    if last_idx == 5:
-        print("\n[DEBUG] Detected existing work up to: Phase 5.")
-        print("All phases complete; nothing to resume.")
-        return
-
-    print("\n[DEBUG] Resuming from Phase:", last_idx + 1)
-
-    # Automatically progress through phases
-    for current in range(last_idx + 1, 6):
-        if current == 3:
-            print("[DEBUG] Triggering Phase 3 wizard...")
-            run_phase3_wizard()
-        elif current == 4:
-            print("[DEBUG] Triggering Phase 4 wizard...")
-            run_phase4_wizard()
-        elif current == 5:
-            print("[DEBUG] Triggering Phase 5 wizard...")
-            run_phase5_wizard()
-        else:
-            print("[DEBUG] No automation implemented for this phase yet.")
-
-    print("\n[DEBUG] Workflow complete. All phases executed.")
+    print("\nAll phases executed successfully!\n")
 
 
 def run_phase4_wizard():
@@ -618,7 +609,7 @@ PHASES.append({
     "title": "Phase 5: Launch & Growth",
     "folder": os.path.join(ROOT, "phase5_launch_growth"),
     "guide": os.path.join(BRAIN, "phase_5_launch_growth.md"),
-    "progress_check": lambda p: _any_files(os.path.join(p, "appstore_metadata.md")) or _any_files(os.path.join(p, "marketing_funnel.md")),
+    "progress_check": lambda p: _any_files(os.path.join(p, "appstore_metadata.md")),
 })
 
 

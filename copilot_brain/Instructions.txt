@@ -35,7 +35,7 @@ Phase 2 – Development Planning: /copilot_brain/phase2_development_planning/ (s
 
 Phase 3 – AI Execution: /copilot_brain/phase3_ai_execution/ (codebase/, tests/, ci_cd_workflows.md, acceptance_criteria.md, tech_stack.md, configs/)
 
-Phase 4 – Testing & Iteration: /copilot_brain/phase4_testing_iteration/ (test_results.md, bug_report.md, ci_cd_logs.md)
+Phase 4 – Testing & Iteration: /copilot_brain/phase4_testing_iteration/
 
 Phase 5 – Launch & Growth: /copilot_brain/phase5_launch_growth/ (appstore_metadata.md, marketing_funnel.md, monetization.md, retention_systems.md, trust_safety.md)
 
